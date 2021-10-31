@@ -1,0 +1,9 @@
+
+# namePrefix: pro-
+commonLabels:
+  variant: pro
+  org: acmeCorporation
+commonAnnotations:
+  note: Hello, I am pro!
+bases:
+- ../../base
