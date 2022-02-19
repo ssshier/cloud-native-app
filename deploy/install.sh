@@ -1,5 +1,10 @@
 #!/bin/bash
 
+function kuboard() {
+    echo "Installing kuboard..."
+    kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
+}
+
 function argo-cd() {
     echo "Installing argocd..."
     kubectl create namespace argocd
@@ -15,8 +20,8 @@ function argo-workflows() {
 function kube-prometheus() {
     echo "Installing prometheus..."
     # Create the namespace and CRDs, and then wait for them to be available before creating the remaining resources
-    kubectl apply --server-side -f kube-prometheus/manifests/setup
-    until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo ""; done
+    kubectl apply -f kube-prometheus/manifests/setup/
+    sleep 10
     kubectl apply -f kube-prometheus/manifests/
     # Access dashboard
     # kubectl --namespace monitoring port-forward svc/prometheus-k8s 9090

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+function kuboard() {
+    echo "Uninstalling kuboard..."
+    kubectl delete --ignore-not-found -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
+}
+
 function argo-cd() {
     echo "Uninstalling argo-cd..."
     kubectl delete --ignore-not-found -f argo-cd/manifests/install.yaml
