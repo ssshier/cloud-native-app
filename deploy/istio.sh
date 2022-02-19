@@ -1,6 +1,7 @@
 #!/bin/bash
 
 function install() {
+    echo "Installing istio..."
     # Configure the Helm repository
     helm repo add istio https://istio-release.storage.googleapis.com/charts
     helm repo update
@@ -20,6 +21,7 @@ function install() {
 }
 
 function uninstall() {
+    echo "Uninstalling istio..."
     helm delete istio-ingress -n istio-ingress
     kubectl delete namespace istio-ingress
     helm delete istiod -n istio-system
